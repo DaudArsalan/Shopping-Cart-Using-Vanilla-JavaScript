@@ -195,6 +195,7 @@ function Cheakout() {
   <input type="hidden" name="upload" value="1">
   <input type="hidden" name="business" value="daudarslan869@gmail.com">`;
   cart.forEach((item, index) => {
+    ++index;
     paypalForm += `
     <input type="hidden" name="item_name_${index}" value="${item.name}">
     <input type="hidden" name="amount_${index}"" value="${item.price}">
