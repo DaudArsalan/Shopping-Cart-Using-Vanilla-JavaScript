@@ -190,7 +190,6 @@ function countCartTotal() {
 }
 
 function Cheakout() {
-  ++index;
   let paypalForm = `<form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
   <input type="hidden" name="cmd" value="_cart">
   <input type="hidden" name="upload" value="1">
@@ -202,6 +201,7 @@ function Cheakout() {
     <input type="hidden" name="quantity_${index}"" value="${item.quantity}">
   `;
   });
+
   paypalForm += `<input type="submit" value="PayPal">
   <div class="overlay"></div>
   </form>`;
