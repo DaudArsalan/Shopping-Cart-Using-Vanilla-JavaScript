@@ -152,9 +152,6 @@ function addCartFooter() {
       .querySelector('[data-action="CLEAR_CART"]')
       .addEventListener("click", () => clearCart());
   }
-  document
-    .querySelector('[data-action="CHEAKOUT"]')
-    .addEventListener("click", () => Cheakout());
 }
 
 function clearCart() {
@@ -187,26 +184,4 @@ function countCartTotal() {
   document.querySelector(
     '[data-action="CHEAKOUT"]'
   ).innerText = `Pay $${cartTotal}`;
-}
-
-function Cheakout() {
-  let paypalForm = `<form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <input type="hidden" name="cmd" value="_cart">
-  <input type="hidden" name="upload" value="1">
-  <input type="hidden" name="business" value="daudarslan869@gmail.com">`;
-  cart.forEach((item, index) => {
-    ++index;
-    paypalForm += `
-    <input type="hidden" name="item_name_${index}" value="${item.name}">
-    <input type="hidden" name="amount_${index}"" value="${item.price}">
-    <input type="hidden" name="quantity_${index}"" value="${item.quantity}">
-  `;
-  });
-
-  paypalForm += `<input type="submit" value="PayPal">
-  <div class="overlay"></div>
-  </form>`;
-
-  document.querySelector("body").insertAdjacentHTML("beforeend", paypalForm);
-  document.getElementById("paypal-form").submit();
 }
